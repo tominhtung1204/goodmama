@@ -1,0 +1,57 @@
+{
+  "version": 2,
+  "public": true,
+  "builds": [
+    {
+      "src": "/api/server.js",
+      "use": "@now/node"
+    },
+    {
+      "src": "www/package.json",
+      "use": "@now/next"
+    }
+  ],
+  "routes": [
+    {
+      "src": "/api/(.*)",
+      "dest": "/api/server.js"
+    },
+    {
+      "src": "/(.*)",
+      "dest": "/www/$1"
+    },
+    { "handle": "filesystem" },
+    {
+      "src": "/blog/(.*)",
+      "dest": "/www/blog/[slug]"
+    },
+    {
+      "src": "/product/(.*)",
+      "dest": "/www/product/[slug]"
+    },
+    {
+      "src": "/admin/product/(.*)",
+      "dest": "/www/admin/product/[id]"
+    },
+    {
+      "src": "/admin/product/category/(.*)",
+      "dest": "/www/admin/product/category/[id]"
+    },
+    {
+      "src": "/admin/blog/category/(.*)",
+      "dest": "/www/admin/blog/category/[id]"
+    },
+    {
+      "src": "/admin/banner/(.*)",
+      "dest": "/www/admin/banner/[id]"
+    },
+    {
+      "src": "/admin/partner/(.*)",
+      "dest": "/www/admin/partner/[id]"
+    },
+    {
+      "src": "/admin/testimonial/(.*)",
+      "dest": "/www/admin/testimonial/[id]"
+    }
+  ]
+}
